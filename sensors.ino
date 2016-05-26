@@ -7,20 +7,21 @@ int steerpinB=10;//enable motor B
 int speed_drive =420;//define the speed of drive motor
 int speed_steer =1524;//define the speed of steering motor
 const int pingPin_R = 7;//sets the pin for the PING sensor on the right side of the car
-const int pingPin_R2 = 6
-const int pingPin_C = 5;//sets the pin for the PING sensor in the center side of the car
-const int pingPin_L = 4;//sets the pin for the PING sensor on the left side of the car
-const int pingPin_L2 = 3 // these are pin numbers in the digital I/O pins of the arduino. PWM. 
+const int pingPin_C = 6;//sets the pin for the PING sensor in the center side of the car
+const int pingPin_L = 5;//sets the pin for the PING sensor on the left side of the car
 long duration_C, inches_C,duration_R, inches_R,duration_L, inches_L;
  
 void setup()
 {
+  Serial.begin(9600);
+  Serial.println("Begin");
   pinMode(pinI1,OUTPUT);
   pinMode(pinI2,OUTPUT);
   pinMode(speedpinA,OUTPUT);
   pinMode(pinI3,OUTPUT);
   pinMode(pinI4,OUTPUT);
   pinMode(steerpinB,OUTPUT);
+  
 }
  
 void loop()
@@ -31,6 +32,7 @@ void loop()
   for(i=0; i<1; i*1){
   j++;
   getping_all();
+  Serial.println("ping all");
 
 
 //all clear, no obstacles within 30" in any direction
@@ -225,6 +227,7 @@ void stop()//stop both motors
       pinMode(pingPin_C, INPUT);
       duration_C = pulseIn(pingPin_C, HIGH);
       inches_C = microsecondsToInches(duration_C);
+      
 }
  void getping_R()//get distance from right PING
 {
@@ -261,6 +264,4 @@ void stop()//stop both motors
 }
   long microsecondsToInches(long microseconds){
     return microseconds / 74 / 2;}
-
-/* The above converts the time of the return to inches as explained here: <a href="http://learn.parallax.com/kickstart/28015" rel="nofollow">http://learn.parallax.com/kickstart/28015
-</a>*/
+    
