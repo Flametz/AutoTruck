@@ -80,7 +80,7 @@ void loop()
   {
    stop();
    backward();
-   delay(1500);
+   delay(1800);
    back_left();
    stop();
    right();
@@ -91,7 +91,7 @@ void loop()
   {
    stop();
    backward();
-   delay(1500);
+   delay(1800);
    back_left();
   }
   //obstacle on right and center
@@ -99,7 +99,7 @@ void loop()
   {
    stop();
    backward();
-   delay(1500);
+   delay(1800);
    back_right();
   }
   //obstacle on right
@@ -163,19 +163,19 @@ void forward()
 {// turns on drive motor in forward and leaves it on
      analogWrite(speedpinA,speed_drive);//inputs speed_drive value to set the speed
      digitalWrite(pinI2,LOW);//turn DC Motor A move anticlockwise
-     digitalWrite(pinI1,HIGH);
+     digitalWrite(pinI1,HIGH);//turn DC motor B move anti-clockwise
 }
 void backward()//
 {// turns on drive motor in reverse and leaves it on
      analogWrite(speedpinA,speed_drive);//inputs speed_drive value to set the speed
      digitalWrite(pinI2,HIGH);//turn DC Motor A move clockwise
-     digitalWrite(pinI1,LOW);
+     digitalWrite(pinI1,LOW);//turn DC Motor B move clockwise
 }
 void right()//
 {
      analogWrite(steerpinB,speed_steer);
      digitalWrite(pinI4,HIGH);//turn DC Motor B move clockwise
-     digitalWrite(pinI3,LOW);
+     digitalWrite(pinI3,LOW);//turn DC Motor A move anti-clockwise
      forward();
      delay(300);
      analogWrite(steerpinB,LOW);
@@ -184,7 +184,7 @@ void back_left()//
 {
      analogWrite(steerpinB,speed_steer);
      digitalWrite(pinI4,HIGH);//turn DC Motor B move clockwise
-     digitalWrite(pinI3,LOW);
+     digitalWrite(pinI3,LOW);//turn DC Motor A move anti-clockwise
      delay(250);
      backward();
      delay(500);
@@ -195,7 +195,7 @@ void left()//
 {
      analogWrite(steerpinB,speed_steer);
      digitalWrite(pinI4,LOW);//turn DC Motor B move anticlockwise
-     digitalWrite(pinI3,HIGH);
+     digitalWrite(pinI3,HIGH);//turn DC Motor A move clockwise
      forward();
      delay(300);
      analogWrite(steerpinB,LOW);
@@ -204,7 +204,7 @@ void back_right()//
 {
      analogWrite(steerpinB,speed_steer);
      digitalWrite(pinI4,LOW);//turn DC Motor B move anticlockwise
-     digitalWrite(pinI3,HIGH);
+     digitalWrite(pinI3,HIGH);//turn DC Motor A move clockwise
      delay(250);
      backward();
      delay(500);
